@@ -1,0 +1,2 @@
+# pachong
+learn python 
