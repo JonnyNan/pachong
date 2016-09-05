@@ -13,8 +13,8 @@ def get_result(searchName,page):
     title_list = []
     price_list = []
     selector = etree.HTML(html.text)
-    title = selector.xpath('.//*[@class="list-title"]/a/@title')
-    price = selector.xpath('.//*[@class="list-title"]/a/span/text()')
+    title = selector.xpath('.//*[@class="feed-nowrap"]/@title')
+    price = selector.xpath('.//*[@class="z-highlight"]/text()')
     for each in title:
         title_list.append(each)
     for each in price:
