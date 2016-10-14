@@ -127,25 +127,25 @@ def geterror():       #从logcat 手机运行日志中找出包含以上异常�
         if ( re.findall(NullPointer,line) or re.findall(IllegalState,line) or re.findall(IllegalArgument,line) or re.findall(ArrayIndexOutOfBounds,line) or re.findall(RuntimeException,line) or re.findall(SecurityException,line) or re.findall(IndexOutOfBounds,line)or re.findall(ClassCast,line)):
                 a=lines.index(line)
                 count +=1
-                quchong_list.append(line)
+                quchong_list.append(re.split(r'E ', line)[1])
                 for var in range(a,a+25):
                     print lines[var]
-                    fr.write(lines[var])
-					
+                    fr.write(lines[var])				
                 fr.write("\n")
     f.close()
     fr.close()
-    quchong_list = list(set(quchong_list))
     return count,quchong_list
 
 
 number,quchong_list=geterror()
 
+quchong = list(set(quchong_list))
+
 if(number>=1):
 	print("程序崩溃了...")
 	print "共抓到"+str(number)+"个错误!"
-	for n in quchong_list:
-		print quchong_list[n]
-	sys.exit(1)
-
+	for n in quchong:
+		print n
+	print "去重后只有以上"+(str)(len(quchong))+"个错误!"
+sys.exit(1)
 
