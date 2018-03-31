@@ -27,7 +27,7 @@ def get_result(searchName,page):
     return list_info
 
 def main():
-    searchName = input('搜索关键字： ')
+    searchName = input('搜索关键字：  ')
     info_result = []
     page =1
     while page < 4:
